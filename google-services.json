@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "477326195173",
+    "firebase_url": "https://junior-design-smart-lock.firebaseio.com",
+    "project_id": "junior-design-smart-lock",
+    "storage_bucket": "junior-design-smart-lock.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:477326195173:android:83034205c4ebce43",
+        "android_client_info": {
+          "package_name": "com.juniordesign.signin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "477326195173-bdt16uqmgkr0ej4rj828toujierhqll1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgCZhsoxl1Kq0FTzSiLnHu1a50JKcRWxI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -12,64 +12,76 @@ import {
 
 import {createStackNavigator} from 'react-navigation';
 
-import HomeScreen from './screens/HomeScreen';
-
-import t from 'tcomb-form-native';
-
-const Form = t.form.Form;
-
-const User = t.struct({
-	name: t.String,
-	username: t.String,
-	password: t.String,
-	cpassword: t.String
-});
-
 export default class RegistrationScreen extends React.Component {
-	onPress = () => {
-		const value = this._form.getValue();
-		if (value) {
-			console.log(value);
-		}
+	constructor(props) {
+		super(props);
+		this.state = {text1: '',
+			text2: '',
+			text3: '',
+			text4: ''};
 	}
 
+	onPress = () => {
+		if (this.state.text1.trim() == '') {
+			this.setState(() => ({newError: "Please enter your name."}));
+		} else if (this.state.text2.trim() == '') {
+			this.setState(() => ({newError: "Please enter your username."}));
+		} else if (this.state.text3.trim() == '') {
+			this.setState(() => ({newError: "Please enter a password"}));
+		} else if (this.state.text4.trim() == '') {
+			this.setState(() => ({newError: "Please re-enter your password"}));
+		} else {
+			this.props.navigation.navigate('Home');
+		}
+	};
+
 	render() {
+		const {navigate} = this.props.navigation;
 		return (
-    	<View style={styles.textStyle}>
-        	<Form  
-        		ref={c => this._form = c}
-        		type={User}
-			/>
+    	<View>
+        	<TextInput
+        		style={styles.textStyle}
+        		placeholder="Name"
+        		onChangeText={(text1) => this.setState({text1})}
+        		value={this.state.text1}
+        	/>
+        	<TextInput
+        		style={styles.textStyle}
+        		placeholder="Username"
+        		onChangeText={(text2) => this.setState({text2})}
+        		value={this.state.text2}
+        	/>
+        	<TextInput
+        		style={styles.textStyle}
+        		placeholder="Password"
+        		onChangeText={(text3) => this.setState({text3})}
+        		value={this.state.text3}
+        	/>
+        	<TextInput
+        		style={styles.textStyle}
+        		placeholder="Confirm Password"
+        		onChangeText={(text4) => this.setState({text4})}
+        		value={this.state.text4}
+        	/>
+        	{!!this.state.newError && (
+        		<Text style={{color: "red"}}>{this.state.newError}
+        		</Text>
+        	)}
 			<Button
 				title="Register"
-				onPress={ this.onPress}
+				onPress={this.onPress}
 			/>	
       	</View>
 		);
 	}
 }
 
-const options = {
-	fields: {
-		name: {
-			error: 'Please enter your name.'
-		},
-		username: {
-			error: 'Please enter a username'
-		},
-		password: {
-			error: 'Please enter a password'
-		},
-		cpassword: {
-			error: 'Please enter your password again.'
-		},
-	},
-};
-
 const styles = StyleSheet.create({
 	textStyle: {
+		borderColor: 'gray',
+		borderWidth: 1,
 		flexDirection: 'column',
-		justifyContent: 'center',
+		justifyContent: 'space-between',
 		alignItems: 'center'
 	}
 });

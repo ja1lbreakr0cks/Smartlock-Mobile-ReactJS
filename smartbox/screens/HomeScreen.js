@@ -14,6 +14,8 @@ import { WebBrowser } from 'expo';
 
 import { MonoText } from '../components/StyledText';
 
+import {createStackNavigator} from 'react-navigation';
+
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
     header: null,
